@@ -66,6 +66,7 @@ set(SOURCES ActorProtocol.cpp
             Temperature.cpp
             TextSearch.cpp
             TimeUtils.cpp
+            UpdateHandler.cpp
             URIUtils.cpp
             UrlOptions.cpp
             Utf8Utils.cpp
@@ -157,6 +158,7 @@ set(HEADERS ActorProtocol.h
             Temperature.h
             TextSearch.h
             TimeUtils.h
+            UpdateHandler.h
             URIUtils.h
             UrlOptions.h
             Utf8Utils.h
