@@ -29,6 +29,7 @@
 #include "utils/CPUInfo.h"
 #include "utils/Environment.h"
 #include "utils/CharsetConverter.h" // Required to initialize converters before usage
+#include "utils/UpdateHandler.h"
 
 
 #include <dbghelp.h>
@@ -131,8 +132,15 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT)
     
     CAppParamParser appParamParser;
     appParamParser.Parse(argv, argc);
+
+    // init inapp updater
+    CUpdateHandler::GetInstance().Init();
+
     // Create and run the app
     status = XBMC_Run(true, appParamParser.m_playlist);
+
+    // deinit the updater
+    CUpdateHandler::GetInstance().Deinit();
   }
   
 
