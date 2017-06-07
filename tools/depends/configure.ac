@@ -322,10 +322,11 @@ case $host in
             AC_MSG_ERROR(error in configure of --with-sdk=$use_sdk)
         esac
         sdk_name=macosx$use_sdk
-        platform_min_version="macosx-version-min=10.8"
 
         use_sdk_path=[`$use_xcodebuild -version -sdk $sdk_name Path`]
         platform_os="osx"
+        platform_min=10.8
+        platform_min_version=macosx-version-min=$platform_min
 
         # find the matching toolchain
         case $use_xcode in
@@ -672,7 +673,8 @@ AC_SUBST(use_gplv3)
 AC_SUBST(has_libcrystax)
 AC_SUBST(use_xcode)
 AC_SUBST(use_ccache)
-
+AC_SUBST(platform_min)
+AC_SUBST(sdk_name)
 AC_OUTPUT
 echo -e "ccache:\t $use_ccache"
 echo -e "toolchain:\t $use_toolchain"
