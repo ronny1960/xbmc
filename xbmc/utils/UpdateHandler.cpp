@@ -26,7 +26,9 @@
 
 #if defined(TARGET_DARWIN_OSX)
 #include "platform/darwin/osx/UpdaterOsx.h"
-#elif defined(TARGET_WINDOWS)
+#elif defined(TARGET_WINDOWS) && !defined(TARGET_WIN10)
+// TARGET_WIN10 - is UWP which supdated via app store - so don't use our
+// sparkle updater in that case
 #include "platform/win32/UpdaterWindows.h"
 #endif
 
@@ -39,7 +41,9 @@ CUpdateHandler::CUpdateHandler()
   {
 #if defined(TARGET_DARWIN_OSX)
     impl = new CUpdaterOsx();
-#elif defined(TARGET_WINDOWS)
+#elif defined(TARGET_WINDOWS) && !defined(TARGET_WIN10)
+    // TARGET_WIN10 - is UWP which supdated via app store - so don't use our
+    // sparkle updater in that case
     impl = new CUpdaterWindows();
 #endif
   }
